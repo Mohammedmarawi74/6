@@ -491,11 +491,11 @@
   }
 }
 
-.preview-container {
-  max-width: 480px;
+.review-container{
+  max-width: 420px; /* زيادة العرض قليلاً لتحسين جودة المعاينة على الشاشات الكبيرة */
   width: 100%;
   transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.6);
 }
 
 /* Progress Bar */

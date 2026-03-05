@@ -2,230 +2,168 @@
 .slide-container {
   position: relative;
   overflow: hidden;
-  border-radius: 2.5rem;
-  aspect-ratio: 4 / 5;
+  border-radius: 2rem;
+  aspect-ratio: 9 / 16; /* حجم الستوري - Story Size */
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 2rem;
   transition: all 0.5s;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-sizing: border-box;
+  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.3);
+  padding: 0;
 }
 
-@media (min-width: 640px) {
-  .slide-container {
-    padding: 2.5rem;
-  }
-}
-
-.slide-bg-orb-1 {
+/* 1. Background Layers */
+.slide-background-image-container {
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 20rem;
-  height: 20rem;
-  border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.2;
-  margin-right: -10rem;
-  margin-top: -10rem;
-  transition: background-color 0.5s;
+  inset: 0;
+  z-index: 1;
 }
 
-.slide-bg-orb-2 {
+.slide-background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.slide-bg-orb-1, .slide-bg-orb-2 {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 16rem;
-  height: 16rem;
   border-radius: 50%;
   filter: blur(80px);
-  opacity: 0.1;
-  margin-left: -8rem;
-  margin-bottom: -8rem;
-  transition: background-color 0.5s;
+  z-index: 1;
+}
+
+.slide-bg-orb-1 { top: -10%; right: -10%; width: 70%; height: 70%; opacity: 0.15; }
+.slide-bg-orb-2 { bottom: -10%; left: -10%; width: 60%; height: 60%; opacity: 0.1; }
+
+/* 1. TOP SECTION (42% height) */
+.slide-top-section {
+  height: 42%;
+  flex-shrink: 0;
+  width: 100%;
+  padding: 2.5rem 2rem 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+  box-sizing: border-box;
 }
 
 .slide-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 2rem;
-  z-index: 10;
-  height: 3rem;
-}
-
-.slide-logo-container {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.slide-logo-dot {
-  width: 0.75rem;
-  height: 0.75rem;
-  border-radius: 50%;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;
 }
 
 .slide-logo-text {
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  opacity: 0.9;
+  font-size: 0.9rem;
+  font-weight: 800;
+  opacity: 0.8;
 }
 
 .slide-number-badge {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.25rem;
+  height: 2.25rem;
   border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.05);
+  background: rgba(0, 0, 0, 0.03);
   border: 1px solid rgba(0, 0, 0, 0.05);
-  backdrop-filter: blur(4px);
 }
 
 .slide-number-text {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 900;
-  opacity: 0.6;
-  font-family: monospace;
+  opacity: 0.5;
 }
 
-.slide-content {
+.slide-text-area {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  z-index: 10;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
 }
 
 .slide-title {
-  font-size: 2.25rem;
   font-weight: 900;
-  line-height: 1.2;
-  margin-bottom: 1.5rem;
-  letter-spacing: -0.025em;
-}
-
-.slide-highlight {
-  display: inline-block;
-  margin-left: 0.375rem;
-}
-
-.slide-image-wrapper {
-  margin: 1rem 0;
-  border-radius: 1.5rem;
-  overflow: hidden;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-  aspect-ratio: 16 / 9;
-  background-color: rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  position: relative;
-  height: 12rem;
+  line-height: 1.25;
+  margin-bottom: 0.5rem;
   width: 100%;
-}
-
-@media (min-width: 640px) {
-  .slide-image-wrapper {
-    height: 14rem;
-  }
-}
-
-.slide-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.7s;
-}
-
-.slide-image-wrapper:hover .slide-image {
-  transform: scale(1.05);
-}
-
-.slide-image-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.2), transparent);
-}
-
-.slide-divider {
-  margin: 1.5rem 0;
-  height: 0.375rem;
-  width: 5rem;
-  border-radius: 9999px;
-  opacity: 0.3;
 }
 
 .slide-description {
-  font-size: 1.125rem;
   font-weight: 500;
   line-height: 1.6;
-  max-width: 95%;
-  opacity: 0.9;
-  margin-top: 0.5rem;
+  opacity: 0.7;
+  width: 100%;
+  font-size: 0.9rem;
 }
 
-.slide-footer {
-  margin-top: auto;
-  padding-top: 2rem;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  z-index: 10;
-}
-
-.slide-footer-left {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.slide-cta {
-  padding: 0.625rem 1.5rem;
-  border-radius: 0.75rem;
-  font-weight: 700;
-  font-size: 0.875rem;
-  transition: all 0.2s;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
-}
-
-.slide-cta:active {
-  transform: scale(0.95);
-}
-
-.slide-cta:hover {
-  filter: brightness(1.1);
-}
-
-.slide-url {
-  font-size: 0.75rem;
-  opacity: 0.5;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  font-family: monospace;
-}
-
-.slide-footer-icon {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 14px;
-  border: 3px solid;
+/* 2. MIDDLE SECTION (46% height) */
+.slide-middle-section {
+  height: 46%;
+  width: 100%;
+  padding: 1rem 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.3;
-  transition: border-color 0.5s;
-  transform: rotate(3deg);
+  z-index: 10;
+  box-sizing: border-box;
+  overflow: hidden;
+  min-height: 0;
 }
 
-.slide-footer-dot {
-  width: 0.375rem;
-  height: 0.375rem;
-  border-radius: 50%;
+.slide-image-container {
+  width: 100%;
+  height: 100%;
+  max-width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  background: rgba(255,255,255,0.03);
+  margin: 0 auto;
+}
+
+.slide-content-image {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* 3. BOTTOM SECTION (12% height) */
+.slide-footer {
+  height: 12%;
+  flex-shrink: 0;
+  width: 100%;
+  padding: 0 2.5rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  box-sizing: border-box;
+}
+
+.slide-footer-brand {
+  font-size: 0.8rem;
+  font-weight: 700;
+  opacity: 0.6;
+}
+
+.slide-url {
+  font-size: 0.8rem;
+  font-weight: 600;
+  opacity: 0.6;
 }

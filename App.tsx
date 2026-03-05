@@ -89,6 +89,13 @@ const PRESET_THEMES = [
   },
 ];
 
+const PRESET_LOGOS = [
+  { id: 'mixed', name: 'ملون', url: '/logos/logo-mixed.png', color: 'linear-gradient(45deg, #0D1137, #00E1C1)' },
+  { id: 'cyan', name: 'سيان', url: '/logos/logo-cyan.png', color: '#00E1C1' },
+  { id: 'navy', name: 'كحلي', url: '/logos/logo-navy.png', color: '#0D1137' },
+  { id: 'white', name: 'أبيض', url: '/logos/logo-white.png', color: '#FFFFFF' },
+];
+
 const DEFAULT_SLIDE: SlideData = {
   id: "1",
   title: "نمو أعمالك بدون تشتيت",
@@ -343,28 +350,34 @@ function App() {
                   <h3 className="section-title" style={{ marginBottom: 0 }}>
                     شعار المؤسسة (Logo)
                   </h3>
-                  {currentSlide.logoUrl && (
+                  {(currentSlide.logoUrl || currentSlide.selectedLogoUrl) && (
                     <button
-                      onClick={() => updateAllSlides({ logoUrl: undefined })}
+                      onClick={() => updateAllSlides({ logoUrl: undefined, selectedLogoUrl: undefined })}
                       style={{
                         padding: "0.375rem",
                         color: "#f87171",
                         border: "none",
-                        background: "transparent",
+                        background: "rgba(248, 113, 113, 0.1)",
+                        borderRadius: "0.5rem",
                         cursor: "pointer",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "0.25rem"
                       }}
                       title="حذف الشعار"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
+                      <span style={{ fontSize: '10px', fontWeight: 700 }}>حذف</span>
                     </button>
                   )}
                 </div>
 
-                <div style={{ display: "flex", gap: "0.75rem" }}>
-                  <div
+                <div style={{ display: "flex", flexDirection: 'column', gap: "1rem" }}>
+                  {/* Custom Upload */}
+                  <div 
                     onClick={() => logoInputRef.current?.click()}
                     className="upload-area"
-                    style={{ height: "3.5rem" }}
+                    style={{ height: "4rem", borderStyle: currentSlide.logoUrl ? 'solid' : 'dashed' }}
                   >
                     <input
                       ref={logoInputRef}
@@ -374,36 +387,55 @@ function App() {
                       onChange={handleLogoUpload}
                     />
                     {currentSlide.logoUrl ? (
-                      <img
-                        src={currentSlide.logoUrl}
-                        style={{ height: "2rem", objectFit: "contain" }}
-                        alt="Logo"
-                      />
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', width: '100%', padding: '0 1rem' }}>
+                         <img
+                          src={currentSlide.logoUrl}
+                          style={{ height: "2.5rem", width: '2.5rem', objectFit: "contain", background: 'white', borderRadius: '4px', padding: '2px' }}
+                          alt="Custom Logo"
+                        />
+                         <span style={{ fontSize: '10px', fontWeight: 700, opacity: 0.6 }}>تم رفع شعار خاص</span>
+                      </div>
                     ) : (
-                      <span className="upload-text">
-                        اضغط لرفع الشعار (PNG, JPG)
-                      </span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <Upload className="w-4 h-4 opacity-40" />
+                        <span className="upload-text">اضغط لرفع شعار مخصص</span>
+                      </div>
                     )}
                   </div>
-                  <div
-                    style={{
-                      width: "3rem",
-                      height: "3.5rem",
-                      border: "1px dashed var(--border-color)",
-                      borderRadius: "0.75rem",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: "2px",
-                        height: "1.5rem",
-                        backgroundColor: "var(--border-color)",
-                        borderRadius: "1px",
-                      }}
-                    ></div>
+
+                  {/* Preset Logos Section */}
+                  <div style={{ background: 'rgba(255,255,255,0.03)', padding: '1rem', borderRadius: '1rem', border: '1px solid var(--border-color)' }}>
+                    <h4 style={{ fontSize: '11px', fontWeight: 700, marginBottom: '0.75rem', opacity: 0.5 }}>أو اختر من شعارات المنصة الرسمية:</h4>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.5rem' }}>
+                      {PRESET_LOGOS.map((logo) => {
+                        const isActive = currentSlide.selectedLogoUrl === logo.url;
+                        return (
+                          <button
+                            key={logo.id}
+                            onClick={() => updateAllSlides({ selectedLogoUrl: logo.url, logoUrl: undefined })}
+                            style={{
+                              aspectRatio: '1',
+                              borderRadius: '0.75rem',
+                              border: isActive ? '2px solid #06b6d4' : '1px solid rgba(255,255,255,0.1)',
+                              background: '#fff',
+                              cursor: 'pointer',
+                              position: 'relative',
+                              padding: '4px',
+                              transition: 'all 0.2s',
+                              overflow: 'hidden'
+                            }}
+                            title={logo.name}
+                          >
+                            <img src={logo.url} style={{ width: '100%', height: '100%', objectFit: 'contain' }} alt={logo.name} />
+                            {isActive && (
+                              <div style={{ position: 'absolute', inset: 0, background: 'rgba(6, 182, 212, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                <Check className="w-4 h-4 text-cyan-500" />
+                              </div>
+                            )}
+                          </button>
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
               </div>

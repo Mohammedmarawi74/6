@@ -13,6 +13,7 @@ export interface SlideData {
   footerUrl?: string;
   logoText?: string;
   logoUrl?: string; // New: Image logo
+  selectedLogoUrl?: string; // One of the preset logos
   imageUrl?: string;
   theme: ThemeMode;
   backgroundColor: string;
