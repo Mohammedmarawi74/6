@@ -104,7 +104,7 @@ const DEFAULT_SLIDE: SlideData = {
   highlightedWord: "تشتيت",
   ctaText: "انضم الآن!",
   footerUrl: "yourwebsite.com",
-  logoText: "براندك",
+  logoText: "",
   theme: ThemeMode.DARK,
   backgroundColor: PRESET_THEMES[0].bg,
   accentColor: PRESET_THEMES[0].accent,

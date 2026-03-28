@@ -65,7 +65,7 @@ const SlidePreview = React.forwardRef<HTMLDivElement, SlidePreviewProps>(({ slid
                 style={{ height: '2.5rem', width: 'auto', maxWidth: '120px', objectFit: 'contain' }} 
               />
             ) : (
-              <span className="slide-logo-text">{slide.logoText || 'العلامة التجارية'}</span>
+              <span className="slide-logo-text">{slide.logoText}</span>
             )}
           </div>
         </div>

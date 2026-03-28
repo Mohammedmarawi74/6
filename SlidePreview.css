@@ -3,7 +3,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 2rem;
-  aspect-ratio: 9 / 16; /* حجم الستوري - Story Size */
+  aspect-ratio: 4 / 5; /* حجم البورتريه - Portrait Size */
   width: 100%;
   display: flex;
   flex-direction: column;

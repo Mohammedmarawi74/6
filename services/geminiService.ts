@@ -39,7 +39,7 @@ export const generateCarouselContent = async (topic: string): Promise<SlideData[
       ...item,
       id: Math.random().toString(36).substr(2, 9),
       footerUrl: "yourbrand.com",
-      logoText: "براندك",
+      logoText: "",
     }));
   } catch (error) {
     console.error("Failed to parse Gemini response", error);
