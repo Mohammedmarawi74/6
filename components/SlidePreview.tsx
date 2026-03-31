@@ -115,7 +115,7 @@ const SlidePreview = React.forwardRef<HTMLDivElement, SlidePreviewProps>(({ slid
           <div className="slide-footer-separator" style={{ backgroundColor: slide.accentColor }}></div>
         </div>
         <div className="slide-footer-left">
-          <span className="slide-url">al_investor.com</span>
+          <span className="slide-url">al-investor.com</span>
         </div>
       </div>
     </div>
