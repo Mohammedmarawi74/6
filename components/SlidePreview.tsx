@@ -19,24 +19,27 @@ const SlidePreview = React.forwardRef<HTMLDivElement, SlidePreviewProps>(({ slid
     backgroundColor: slide.backgroundColor,
     color: slide.textColor,
     transform: `scale(${scale})`,
+    transformOrigin: 'top center',
   };
 
   const fitText = (textEl: HTMLElement | null, containerEl: HTMLElement | null, maxFontSize: number) => {
     if (!textEl || !containerEl) return;
+    // reset to max first
+    textEl.style.fontSize = `${maxFontSize}px`;
+    // only shrink if content truly overflows
     let fontSize = maxFontSize;
-    textEl.style.fontSize = `${fontSize}px`;
     while (
-      (textEl.scrollHeight > containerEl.clientHeight || textEl.scrollWidth > containerEl.clientWidth) && 
-      fontSize > 10
+      (textEl.scrollHeight > containerEl.clientHeight || textEl.scrollWidth > containerEl.clientWidth) &&
+      fontSize > 8
     ) {
-      fontSize -= 1;
+      fontSize -= 0.5;
       textEl.style.fontSize = `${fontSize}px`;
     }
   };
 
   React.useLayoutEffect(() => {
-    fitText(titleRef.current, titleContainerRef.current, 40); // 40px مناسب لنسبة 9:16
-    fitText(descRef.current, descContainerRef.current, 18);   // 18px للوصف
+    fitText(titleRef.current, titleContainerRef.current, 40);
+    fitText(descRef.current, descContainerRef.current, 18);
   }, [slide.title, slide.description]);
 
   return (

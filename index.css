@@ -23,8 +23,10 @@ body {
   font-family: "IBM Plex Sans Arabic", sans-serif;
   background-color: var(--bg-dark);
   color: var(--text-primary);
-  overflow-x: hidden;
+  overflow: hidden; /* منع الـ scroll على مستوى الصفحة كاملاً */
   line-height: 1.5;
+  height: 100vh;
+  max-height: 100vh;
 }
 
 .mesh-gradient {

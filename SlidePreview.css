@@ -3,14 +3,19 @@
   position: relative;
   overflow: hidden;
   border-radius: 2rem;
-  aspect-ratio: 4 / 5; /* حجم البورتريه - Portrait Size */
+  aspect-ratio: 4 / 5;
   width: 100%;
+  /* الحل الجوهري: منع الـ container من التمدد فوق الـ aspect-ratio */
+  max-height: none;
   display: flex;
   flex-direction: column;
-  transition: all 0.5s;
+  /* إجبار الأبناء على عدم تكبير الـ container */
+  align-items: stretch;
   box-sizing: border-box;
   box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.3);
   padding: 0;
+  /* هذا هو المفتاح: منع الـ flex item من الاستطالة */
+  flex-shrink: 0;
 }
 
 /* 1. Background Layers */
@@ -37,16 +42,18 @@
 .slide-bg-orb-1 { top: -10%; right: -10%; width: 70%; height: 70%; opacity: 0.15; }
 .slide-bg-orb-2 { bottom: -10%; left: -10%; width: 60%; height: 60%; opacity: 0.1; }
 
-/* 1. TOP SECTION (42% height) */
+/* 1. TOP SECTION - 42% ثابتة */
 .slide-top-section {
   height: 42%;
-  flex-shrink: 0;
+  max-height: 42%;
+  flex: 0 0 42%;
   width: 100%;
   padding: 2.5rem 2rem 0;
   display: flex;
   flex-direction: column;
   z-index: 10;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .slide-header {
@@ -82,19 +89,42 @@
 }
 
 .slide-text-area {
-  flex-grow: 1;
+  flex: 1 1 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
   text-align: center;
+  min-height: 0;
+  gap: 0.5rem;
+}
+
+.slide-title-wrapper {
+  overflow: hidden;
+  min-height: 0;
+  /* ارتفاع كافٍ لعرض العنوان بحجم كبير */
+  flex: 0 0 55%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-description-wrapper {
+  overflow: hidden;
+  min-height: 0;
+  /* ارتفاع كافٍ للوصف */
+  flex: 0 0 40%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .slide-title {
   font-weight: 900;
   line-height: 1.25;
-  margin-bottom: 0.5rem;
   width: 100%;
+  margin: 0;
+  word-break: break-word;
 }
 
 .slide-description {
@@ -103,11 +133,15 @@
   opacity: 0.7;
   width: 100%;
   font-size: 0.9rem;
+  margin: 0;
+  word-break: break-word;
 }
 
-/* 2. MIDDLE SECTION (46% height) */
+/* 2. MIDDLE SECTION - 46% ثابتة */
 .slide-middle-section {
   height: 46%;
+  max-height: 46%;
+  flex: 0 0 46%;
   width: 100%;
   padding: 1rem 2.5rem;
   display: flex;
@@ -116,7 +150,6 @@
   z-index: 10;
   box-sizing: border-box;
   overflow: hidden;
-  min-height: 0;
 }
 
 .slide-image-container {
@@ -142,10 +175,11 @@
   display: block;
 }
 
-/* 3. BOTTOM SECTION (12% height) */
+/* 3. BOTTOM SECTION - 12% ثابتة */
 .slide-footer {
   height: 12%;
-  flex-shrink: 0;
+  max-height: 12%;
+  flex: 0 0 12%;
   width: 100%;
   padding: 0 2.5rem 1.5rem;
   display: flex;
@@ -154,6 +188,7 @@
   z-index: 10;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .slide-footer-brand {
