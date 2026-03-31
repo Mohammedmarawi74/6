@@ -55,11 +55,6 @@ const SlidePreview = React.forwardRef<HTMLDivElement, SlidePreviewProps>(({ slid
       {/* 1. Top Section: Logo + Title + Description */}
       <div className="slide-top-section">
         <div className="slide-header">
-           <div className="slide-number-badge">
-             <span className="slide-number-text" style={{ color: slide.textColor }}>
-               {String(index).padStart(2, '0')}
-             </span>
-          </div>
           <div className="slide-logo-container">
             {slide.logoUrl || slide.selectedLogoUrl ? (
               <img 
@@ -70,6 +65,11 @@ const SlidePreview = React.forwardRef<HTMLDivElement, SlidePreviewProps>(({ slid
             ) : (
               <span className="slide-logo-text">{slide.logoText}</span>
             )}
+          </div>
+           <div className="slide-number-badge">
+             <span className="slide-number-text" style={{ color: slide.textColor }}>
+               {String(index).padStart(2, '0')}
+             </span>
           </div>
         </div>
 
