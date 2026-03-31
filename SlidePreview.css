@@ -2,7 +2,7 @@
 .slide-container {
   position: relative;
   overflow: hidden;
-  border-radius: 2rem;
+  border-radius: 0; /* حواف حادة 90 درجة */
   aspect-ratio: 4 / 5;
   width: 100%;
   /* الحل الجوهري: منع الـ container من التمدد فوق الـ aspect-ratio */
