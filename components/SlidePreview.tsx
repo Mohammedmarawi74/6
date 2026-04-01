@@ -65,7 +65,7 @@ const SlidePreview = React.forwardRef<HTMLDivElement, SlidePreviewProps>(({ slid
             </div>
           </div>
           <div className="poster-header-left">
-            <div className="poster-investor-name">توعوي</div>
+            <div className="poster-investor-name">{slide.slideNumber || 'توعوي'}</div>
           </div>
         </div>
 

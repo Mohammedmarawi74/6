@@ -110,6 +110,7 @@ const DEFAULT_SLIDE: SlideData = {
   accentColor: PRESET_THEMES[0].accent,
   secondaryColor: PRESET_THEMES[0].secondary,
   textColor: PRESET_THEMES[0].text,
+  slideNumber: "توعوي",
 };
 
 function App() {
@@ -668,7 +669,7 @@ function App() {
                         onChange={(e) =>
                           updateSlide(currentSlide.id, { slideNumber: e.target.value })
                         }
-                        placeholder={String(activeIndex + 1).padStart(2, '0')}
+                        placeholder="توعوي"
                         className="text-input"
                         style={{ fontWeight: 700 }}
                       />
