@@ -55,21 +55,17 @@ const SlidePreview = React.forwardRef<HTMLDivElement, SlidePreviewProps>(({ slid
       {/* 1. Top Section: Logo + Title + Description */}
       <div className="slide-top-section">
         <div className="slide-header">
-          <div className="slide-logo-container">
-            {slide.logoUrl || slide.selectedLogoUrl ? (
-              <img 
-                src={slide.logoUrl || slide.selectedLogoUrl} 
-                alt="Logo" 
-                style={{ height: '2.5rem', width: 'auto', maxWidth: '120px', objectFit: 'contain' }} 
-              />
-            ) : (
-              <span className="slide-logo-text">{slide.logoText}</span>
-            )}
+          <div className="poster-header-right">
+            <div className="poster-logo-icon">
+              <img alt="Logo" className="poster-logo-image" src={slide.logoUrl || slide.selectedLogoUrl || "/logos/alinvestor white.svg"} />
+            </div>
+            <div className="poster-brand-container">
+              <span className="poster-brand-main" style={{ color: slide.accentColor || 'rgb(14, 165, 233)' }}>{slide.logoText || 'منصة المستثمر'}</span>
+              <span className="poster-brand-sub">في رحلة لتطوير الاقتصاد العربي</span>
+            </div>
           </div>
-           <div className="slide-number-badge">
-              <span className="slide-number-text" style={{ color: slide.textColor }}>
-                {slide.slideNumber || String(index).padStart(2, '0')}
-              </span>
+          <div className="poster-header-left">
+            <div className="poster-investor-name">توعوي</div>
           </div>
         </div>
 

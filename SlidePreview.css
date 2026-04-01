@@ -60,34 +60,67 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.5rem;
-  height: 2.5rem;
+  margin-bottom: 2rem;
+  width: 100%;
   flex-shrink: 0;
+  direction: rtl; /* Ensure RTL layout for the header */
 }
 
-.slide-logo-text {
-  font-size: 0.9rem;
-  font-weight: 800;
-  opacity: 0.8;
+/* Poster Header Theme */
+.poster-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
 }
 
-.slide-number-badge {
+.poster-logo-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 2.25rem;
-  height: 2.25rem;
-  padding: 0 0.5rem;
-  border-radius: 1.125rem;
-  background: rgba(0, 0, 0, 0.03);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  height: 2.75rem;
 }
 
-.slide-number-text {
-  font-size: 0.75rem;
-  font-weight: 900;
-  opacity: 0.5;
+.poster-logo-image {
+  height: 100%;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
 }
+
+.poster-brand-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.poster-brand-main {
+  font-size: 1.15rem;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.poster-brand-sub {
+  font-size: 0.65rem;
+  font-weight: 500;
+  opacity: 0.6;
+  margin-top: 0.1rem;
+}
+
+.poster-header-left {
+  display: flex;
+  align-items: center;
+}
+
+.poster-investor-name {
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 0.5rem 1.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 2rem;
+  opacity: 0.9;
+}
+
 
 .slide-text-area {
   flex: 1 1 0;
