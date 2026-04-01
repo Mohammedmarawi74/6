@@ -661,37 +661,60 @@ function App() {
                       marginTop: "1rem",
                     }}
                   >
-                    <input
-                      value={currentSlide.title}
-                      onChange={(e) =>
-                        updateSlide(currentSlide.id, { title: e.target.value })
-                      }
-                      placeholder="العنوان"
-                      className="text-input"
-                      style={{ fontWeight: 700 }}
-                    />
-                    <input
-                      value={currentSlide.highlightedWord}
-                      onChange={(e) =>
-                        updateSlide(currentSlide.id, {
-                          highlightedWord: e.target.value,
-                        })
-                      }
-                      placeholder="الكلمة المميزة"
-                      className="text-input"
-                      style={{ fontWeight: 700 }}
-                    />
-                    <textarea
-                      value={currentSlide.description}
-                      onChange={(e) =>
-                        updateSlide(currentSlide.id, {
-                          description: e.target.value,
-                        })
-                      }
-                      placeholder="الوصف"
-                      className="textarea-input"
-                      style={{ fontWeight: 500 }}
-                    />
+                    <div className="input-group">
+                      <label className="input-label" style={{ marginBottom: '0.25rem', fontSize: '0.625rem', opacity: 0.6 }}>رقم الشريحة (أو نص قصير)</label>
+                      <input
+                        value={currentSlide.slideNumber || ""}
+                        onChange={(e) =>
+                          updateSlide(currentSlide.id, { slideNumber: e.target.value })
+                        }
+                        placeholder={String(activeIndex + 1).padStart(2, '0')}
+                        className="text-input"
+                        style={{ fontWeight: 700 }}
+                      />
+                    </div>
+                    
+                    <div className="input-group">
+                      <label className="input-label" style={{ marginBottom: '0.25rem', fontSize: '0.625rem', opacity: 0.6 }}>العنوان</label>
+                      <input
+                        value={currentSlide.title}
+                        onChange={(e) =>
+                          updateSlide(currentSlide.id, { title: e.target.value })
+                        }
+                        placeholder="العنوان"
+                        className="text-input"
+                        style={{ fontWeight: 700 }}
+                      />
+                    </div>
+                    <div className="input-group">
+                      <label className="input-label" style={{ marginBottom: '0.25rem', fontSize: '0.625rem', opacity: 0.6 }}>الكلمة المميزة</label>
+                      <input
+                        value={currentSlide.highlightedWord}
+                        onChange={(e) =>
+                          updateSlide(currentSlide.id, {
+                            highlightedWord: e.target.value,
+                          })
+                        }
+                        placeholder="الكلمة المميزة"
+                        className="text-input"
+                        style={{ fontWeight: 700 }}
+                      />
+                    </div>
+                    
+                    <div className="input-group">
+                      <label className="input-label" style={{ marginBottom: '0.25rem', fontSize: '0.625rem', opacity: 0.6 }}>الوصف</label>
+                      <textarea
+                        value={currentSlide.description}
+                        onChange={(e) =>
+                          updateSlide(currentSlide.id, {
+                            description: e.target.value,
+                          })
+                        }
+                        placeholder="الوصف"
+                        className="textarea-input"
+                        style={{ fontWeight: 500 }}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>

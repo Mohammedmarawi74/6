@@ -67,9 +67,9 @@ const SlidePreview = React.forwardRef<HTMLDivElement, SlidePreviewProps>(({ slid
             )}
           </div>
            <div className="slide-number-badge">
-             <span className="slide-number-text" style={{ color: slide.textColor }}>
-               {String(index).padStart(2, '0')}
-             </span>
+              <span className="slide-number-text" style={{ color: slide.textColor }}>
+                {slide.slideNumber || String(index).padStart(2, '0')}
+              </span>
           </div>
         </div>
 

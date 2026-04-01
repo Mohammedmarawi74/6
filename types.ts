@@ -20,6 +20,7 @@ export interface SlideData {
   accentColor: string; // Used as Primary
   secondaryColor?: string; // New: Secondary Color
   textColor: string;
+  slideNumber?: string;
 }
 
 export interface CarouselConfig {
